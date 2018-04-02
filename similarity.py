@@ -25,7 +25,7 @@ def print_error(type, file):
 
 def similarity_pairs(dir, output, verbose=False):
     latin_characters = [format(i + 32, '05x') for i in range(96)]
-    unicode_characters = []
+    unicode_characters = os.listdir(dir)
 
     latin_characters_count = 0
 
@@ -33,7 +33,9 @@ def similarity_pairs(dir, output, verbose=False):
 
     for i, latin_character in enumerate(latin_characters):
         with open(output, 'a') as file:
-            to_file = latin_character + ' '
+            to_file = ' '.join(unicode_characters) + '\n'
+            file.write(to_file)
+            to_file = latin_character
             for j, unicode_chracter in enumerate(os.listdir(dir)):
                 latin_path = os.path.join(dir, latin_character) + ".png"
 
@@ -46,7 +48,7 @@ def similarity_pairs(dir, output, verbose=False):
                 unicode_pred = model.predict(unicode_img).reshape(1, -1)
 
                 sim = similarity(latin_pred, unicode_pred)
-                to_file = to_file + str(sim) + ' '
+                to_file = to_file + ' ' + str(sim)
                 if verbose:
                     print(('Similarity between '
                           '{} and {}: {}').format(latin_character,
