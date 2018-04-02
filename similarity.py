@@ -30,12 +30,11 @@ def similarity_pairs(dir, output, verbose=False):
     latin_characters = [format(i + 32, '05x') for i in range(96)]
     unicode_characters = sorted(os.listdir(dir))
 
-    latin_characters_count = 0
-
     model = VGG16(include_top=False, weights='imagenet')
 
     with open(output, 'a') as file:
-        to_file = ' ' + ' '.join(list(map(remove_extension, unicode_characters))) + '\n'
+        to_file = ' ' + ' '.join(list(map(remove_extension,
+                                          unicode_characters))) + '\n'
         file.write(to_file)
 
     for i, latin_character in enumerate(latin_characters):
@@ -57,7 +56,8 @@ def similarity_pairs(dir, output, verbose=False):
                 if verbose:
                     print(('Similarity between '
                           '{} and {}: {}').format(latin_character,
-                                                  remove_extension(unicode_chracter), sim))
+                                                  remove_extension(
+                                                    unicode_chracter), sim))
             to_file = to_file + '\n'
             file.write(to_file)
             to_file = ''

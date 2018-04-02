@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import numpy as np
 import pickle
@@ -23,21 +22,19 @@ def print_error(type, file):
                             'The {} {} does not exist'.format(type, file)))
 
 
-def calculate_threshold(similarity, images, output='confusables.pickle',
+def calculate_threshold(similarity, output='confusables.pickle',
                         threshold=0.8, verbose=False):
 
-    unicode_characters = np.asarray(list(map(remove_extension,
-                                             os.listdir(images))))
-
     lines = [line.rstrip('\n') for line in open(similarity)]
+
+    unicode_characters = np.asarray(lines[0].split(' ')[1:])
 
     data = {}
     data['threshold'] = threshold
     data['characters'] = {}
-    for l in lines:
+    for l in lines[1:]:
         line = l.split(' ')
         latin = line[0]
-        del line[-1]
         del line[0]
         similarity_row = np.asarray(line, dtype=np.float)
         indexes = np.where(similarity_row >= threshold)
@@ -59,7 +56,6 @@ def main():
                                                  'and a similarity matrix')
 
     parser.add_argument('-s', '--similarity', default='similarities.txt')
-    parser.add_argument('-i', '--images', default='images')
     parser.add_argument('-t', '--threshold', default=0.8, type=float)
     parser.add_argument('-o', '--output', default='confusables.pickle')
     parser.add_argument('-v', '--verbose', action='store_true')
@@ -67,7 +63,6 @@ def main():
     args = parser.parse_args()
 
     similarity = args.similarity
-    images = args.images
     threshold = args.threshold
     output = args.output
     verbose = args.verbose
@@ -76,11 +71,7 @@ def main():
         print_error('file', similarity)
         sys.exit(1)
 
-    if not dir_exists(images):
-        print_error('directory', images)
-        sys.exit(1)
-
-    calculate_threshold(similarity, images, output, threshold, verbose)
+    calculate_threshold(similarity, output, threshold, verbose)
 
 
 if __name__ == '__main__':
