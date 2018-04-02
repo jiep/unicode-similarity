@@ -33,7 +33,7 @@ def similarity_pairs(dir, output, verbose=False):
 
     for i, latin_character in enumerate(latin_characters):
         with open(output, 'a') as file:
-            to_file = ' '.join(unicode_characters) + '\n'
+            to_file = ' ' + ' '.join(unicode_characters) + '\n'
             file.write(to_file)
             to_file = latin_character
             for j, unicode_chracter in enumerate(os.listdir(dir)):
