@@ -8,12 +8,50 @@ TODO
 
 ### Prerequisites
 
-TODO
+Python version >= 3.5
 
 ### Installing
 
-TODO
+pip install -r requirements.txt
 
+### Usage
+
+#### similarity.py
+
+```
+username@host:~/path/to/unicode-similarity$ python3 similarity.py -h
+usage: similarity.py [-h] [-i IMAGES] [-o OUTPUT] [-v]
+
+Compute the similarity between Unicode and latin characters by using transfer
+learning.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i IMAGES, --images IMAGES
+  -o OUTPUT, --output OUTPUT
+  -v, --verbose
+
+username@host:~/path/to/unicode-similarity$ python3 similarity.py -i path/to/unicode_database -o path/to/similarities.txt
+
+```
+#### threshold.py
+
+```
+username@host:~/path/to/unicode-similarity$ python3 threshold.py -h
+usage: threshold.py [-h] [-s SIMILARITY] [-i IMAGES] [-t THRESHOLD]
+                    [-o OUTPUT] [-v]
+
+Filter Unicode characters based on a given threshold and a similarity matrix
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SIMILARITY, --similarity SIMILARITY
+  -t THRESHOLD, --threshold THRESHOLD
+  -o OUTPUT, --output OUTPUT
+  -v, --verbose
+
+username@host:~/path/to/unicode-similarity$ python3 similarity.py -o path/to/confusables.pickle -s path/to/similarities.txt
+```
 ## Authors
 
 * José Ignacio Escribano Pablos
