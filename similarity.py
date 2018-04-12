@@ -25,9 +25,6 @@ def print_error(type, file):
 
 def similarity_pairs(dir, output, verbose=False):
     latin_characters = [format(i + 32, '05x') for i in range(96)]
-    unicode_characters = []
-
-    latin_characters_count = 0
 
     model = VGG16(include_top=False, weights='imagenet')
 
