@@ -31,7 +31,7 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
   -v, --verbose
 
-username@host:~/path/to/unicode-similarity$ python3 similarity.py -i path/to/unicode_database -o path/to/similarity.txt
+username@host:~/path/to/unicode-similarity$ python3 similarity.py -i path/to/unicode_database -o path/to/similarities.txt
 
 ```
 #### threshold.py
@@ -46,11 +46,11 @@ Filter Unicode characters based on a given threshold and a similarity matrix
 optional arguments:
   -h, --help            show this help message and exit
   -s SIMILARITY, --similarity SIMILARITY
-  -i IMAGES, --images IMAGES
   -t THRESHOLD, --threshold THRESHOLD
   -o OUTPUT, --output OUTPUT
   -v, --verbose
 
+username@host:~/path/to/unicode-similarity$ python3 similarity.py -o path/to/confusables.pickle -s path/to/similarities.txt
 ```
 ## Authors
 
