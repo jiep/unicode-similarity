@@ -1,10 +1,10 @@
-# unicode-similarity
+# V2D-similarity
 
-TODO
+This project extract all the unicode image features to compare and create a confusables file that we used in the CLI. More in detail, we use VGG16 model, with weights pre-trained on ImageNet.
+
+We applied the neural network to extract the features of the Basic Latin Unicode and the others blocks and generate a similarities vectors. Then, we process with cosine function this vectors to extract the coefficient of similarity between images. Finally, this process generate a matrix with all the comparatives and its used in the CLI.
 
 ## Getting started
-
-TODO
 
 ### Prerequisites
 
@@ -57,6 +57,12 @@ username@host:~/path/to/unicode-similarity$ python3 similarity.py -o path/to/con
 * José Ignacio Escribano Pablos
 * Miguel Hernández Boza - @MiguelHzBz
 * Alfonso Muñoz Muñoz - @mindcrypt
+
+## Contributing
+
+Any collaboration is welcome!
+
+There're many tasks to do.You can check the [Issues](https://github.com/jiep/unicode/issues) and send us a Pull Request.
 
 ## License
 
