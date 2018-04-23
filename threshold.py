@@ -22,7 +22,7 @@ def print_error(type, file):
                             'The {} {} does not exist'.format(type, file)))
 
 
-def calculate_threshold(similarity, output='confusables.pickle',
+def calculate_threshold(similarity, output='confusables',
                         threshold=0.8, verbose=False):
 
     lines = [line.rstrip('\n') for line in open(similarity)]
@@ -46,6 +46,7 @@ def calculate_threshold(similarity, output='confusables.pickle',
         if(verbose):
             print('[{}] {}: {}'.format(len(chars), latin, ','.join(chars)))
 
+    output = '{}-{}.pickle'.format(output, int(threshold*100))
     with open(output, 'wb') as f:
         pickle.dump(data, f)
 
@@ -53,11 +54,12 @@ def calculate_threshold(similarity, output='confusables.pickle',
 def main():
     parser = argparse.ArgumentParser(description='Filter Unicode characters '
                                                  'based on a given threshold '
+                                                 'between 0 and 1 '
                                                  'and a similarity matrix')
 
     parser.add_argument('-s', '--similarity', default='similarities.txt')
     parser.add_argument('-t', '--threshold', default=0.8, type=float)
-    parser.add_argument('-o', '--output', default='confusables.pickle')
+    parser.add_argument('-o', '--output', default='confusables')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
