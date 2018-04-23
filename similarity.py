@@ -10,6 +10,9 @@ from pathlib import Path
 import errno
 
 
+def remove_extension(x): return x.split('.')[0]
+
+
 def file_exists(path):
     return Path(path).is_file()
 
@@ -25,13 +28,19 @@ def print_error(type, file):
 
 def similarity_pairs(dir, output, verbose=False):
     latin_characters = [format(i + 32, '05x') for i in range(96)]
+    unicode_characters = sorted(os.listdir(dir))
 
     model = VGG16(include_top=False, weights='imagenet')
 
+    with open(output, 'a') as file:
+        to_file = ' ' + ' '.join(list(map(remove_extension,
+                                          unicode_characters))) + '\n'
+        file.write(to_file)
+
     for i, latin_character in enumerate(latin_characters):
         with open(output, 'a') as file:
-            to_file = latin_character + ' '
-            for j, unicode_chracter in enumerate(os.listdir(dir)):
+            to_file = latin_character
+            for j, unicode_chracter in enumerate(unicode_characters):
                 latin_path = os.path.join(dir, latin_character) + ".png"
 
                 latin_img = load_img(latin_path)
@@ -43,11 +52,12 @@ def similarity_pairs(dir, output, verbose=False):
                 unicode_pred = model.predict(unicode_img).reshape(1, -1)
 
                 sim = similarity(latin_pred, unicode_pred)
-                to_file = to_file + str(sim) + ' '
+                to_file = to_file + ' ' + str(sim)
                 if verbose:
                     print(('Similarity between '
                           '{} and {}: {}').format(latin_character,
-                                                  unicode_chracter, sim))
+                                                  remove_extension(
+                                                    unicode_chracter), sim))
             to_file = to_file + '\n'
             file.write(to_file)
             to_file = ''
