@@ -1,8 +1,8 @@
 # V2D-similarity
 
-This project extract all the unicode image features to compare and create a confusables file that we used in the CLI. More in detail, we use VGG16 model, with weights pre-trained on ImageNet.
+This project extracts all the `Unicode` image features to compare and creates a `confusables` file that we used in the `CLI`. More in detail, we use [VGG16 model](https://arxiv.org/abs/1409.1556), with weights pre-trained on [ImageNet](http://image-net.org).
 
-We applied the neural network to extract the features of the Basic Latin Unicode and the others blocks and generate a similarities vectors. Then, we process with cosine function this vectors to extract the coefficient of similarity between images. Finally, this process generate a matrix with all the comparatives and its used in the CLI.
+We apply the neural network to extract the features of each one of the images. Then, we calculate the [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) between the `Basic Latin` and the rest of `Unicode` characters features. This process (`similarity.py`) generates a `similarity matrix` between `Basic Latin` and `Unicode` characters. With this similarity matrix (`similarities.txt`), we generate a file named `confusables.pickle` with the similar characters given a threshold between 0 and 1 (`threshold.py`). This file is used by the `CLI`.
 
 ## Getting started
 
@@ -12,17 +12,28 @@ Python version >= 3.5
 
 ### Installing
 
-pip install -r requirements.txt
+`pip3 install -r requirements.txt`
+
+It depends on the following dependencies:
+
+* `keras`
+* `numpy`
+* `scikit-learn`
+* `h5py`
+* `scipy`
+* `tensorflow`
 
 ### Usage
 
 #### similarity.py
 
+Compute the similarity between Unicode and Latin characters by using transfer
+
 ```
 username@host:~/path/to/unicode-similarity$ python3 similarity.py -h
 usage: similarity.py [-h] [-i IMAGES] [-o OUTPUT] [-v]
 
-Compute the similarity between Unicode and latin characters by using transfer
+Compute the similarity between Unicode and Latin characters by using transfer
 learning.
 
 optional arguments:
@@ -35,6 +46,8 @@ username@host:~/path/to/unicode-similarity$ python3 similarity.py -i path/to/uni
 
 ```
 #### threshold.py
+
+Filter Unicode characters based on a given threshold and a similarity matrix
 
 ```
 username@host:~/path/to/unicode-similarity$ python3 threshold.py -h
@@ -66,4 +79,4 @@ There're many tasks to do.You can check the [Issues](https://github.com/jiep/uni
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
