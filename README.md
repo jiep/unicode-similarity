@@ -63,8 +63,13 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
   -v, --verbose
 
-username@host:~/path/to/unicode-similarity$ python3 similarity.py -o path/to/confusables.pickle -s path/to/similarities.txt
+username@host:~/path/to/unicode-similarity$ python3 threshold.py -o path/to/confusables.pickle -s path/to/similarities.txt
 ```
+
+### Demo
+
+[![demo](https://asciinema.org/a/AfxvUUPifuUi4tYlazGNAqt5U.png)](https://asciinema.org/a/AfxvUUPifuUi4tYlazGNAqt5U?autoplay=1)
+
 ## Authors
 
 * José Ignacio Escribano Pablos
