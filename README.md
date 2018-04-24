@@ -63,7 +63,7 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
   -v, --verbose
 
-username@host:~/path/to/unicode-similarity$ python3 similarity.py -o path/to/confusables.pickle -s path/to/similarities.txt
+username@host:~/path/to/unicode-similarity$ python3 threshold.py -o path/to/confusables.pickle -s path/to/similarities.txt
 ```
 ## Authors
 
