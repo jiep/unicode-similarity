@@ -1,4 +1,8 @@
-# V2D-similarity
+<h1 align="center">Deep Confusables similarity</h1>
+
+<p align="center">
+  <img src="./images/logo.png" width="30%" />
+</p>
 
 This project extracts all the `Unicode` image features to compare and creates a `confusables` file that we used in the `CLI`. More in detail, we use [VGG16 model](https://arxiv.org/abs/1409.1556), with weights pre-trained on [ImageNet](http://image-net.org).
 
@@ -70,18 +74,24 @@ username@host:~/path/to/unicode-similarity$ python3 threshold.py -o path/to/conf
 
 [![demo](https://asciinema.org/a/AfxvUUPifuUi4tYlazGNAqt5U.png)](https://asciinema.org/a/AfxvUUPifuUi4tYlazGNAqt5U?autoplay=1)
 
-## Authors
+## License
 
-* José Ignacio Escribano Pablos
-* Miguel Hernández Boza - @MiguelHzBz
-* Alfonso Muñoz Muñoz - @mindcrypt
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
 Any collaboration is welcome!
 
-There're many tasks to do.You can check the [Issues](https://github.com/PantherLab/v2d-similarity/issues) and send us a Pull Request.
+There're many tasks to do.You can check the [Issues](https://github.com/next-security-lab/deep-confusables-similarity/issues) and send us a Pull Request.
 
-## License
+## Authors
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* José Ignacio Escribano Pablos - [@jiep](https://github.com/jiep)
+* Miguel Hernández Boza - [@Miguel000](https://github.com/Miguel000)
+* Alfonso Muñoz Muñoz - [@mindcrypt](https://github.com/mindcrypt)
+
+<!-- Banner -->
+<p align="center">
+  <img src="./images/banner.png"/>
+</p>
+<h4 align="center" style="margin: -20px">Made with <span style="color:#e25555;">❤️</span> by <a Cybersecurity Lab @ <a href="https://www.bbvanexttechnologies.com">BBVA Next Techonologies</a> </h4>
